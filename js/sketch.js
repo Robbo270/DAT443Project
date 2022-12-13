@@ -1,106 +1,86 @@
-var WidthRect = 70;
+/* var WidthRect = 70;
+var heightRect = 70;
+var particles = []; */
 
+var c1 = function(p){
+
+    var WidthRect = 70;
 var heightRect = 70;
 
-var particles = [];
-
- 
-
-function setup() {
-
-    cursor(CROSS,32,32)
-
-    var canvas = createCanvas(1200,1000);
-
-    canvas.parent("p5container");
-
-    background(0)
-
+    p.setup = function() {
+    p.cursor(CROSS,32,32)
+    var canvas = createCanvas(1000,1000);
+    canvas.parent('#sketch1');
+    p.background(0)
 }
-
- 
 
 let colorPicker;
-
-function setup(){
-
-    myColor =  createColorPicker(color(255));
-
-  createCanvas(80, 80);
-
-  colorPicker = createColorPicker('#ed225d');
-
-  colorPicker.position(50, height);
-
-  //I added another color picker and this one is for the cursor
-  myColor.position(100, height);
-
-  cursor(CROSS,32,32)
-
-    var canvas = createCanvas(innerWidth,innerHeight-100);
-
-    canvas.parent("p5container");
-
-    //replaced background(0) with this
-    background(colorPicker.color());
-
+p.setup = function() {
+    myColor =  p.createColorPicker(p.color(255));
+  p.createCanvas(80, 80);
+  colorPicker = p.createColorPicker('#ed225d');
+  colorPicker.position(50, p.height);
+  myColor.position(100, p.height);
+  p.cursor(p.CROSS,32,32)
+    var canvas = p.createCanvas(innerWidth,innerHeight-100);
+    canvas.parent("sketch1");
+    p.background(colorPicker.color());
 }
 
- 
-
-function draw() {
-
-    //removed background from here
-
-    if(mouseIsPressed === true){
-
-        fill(myColor.color());
-
-        noStroke();
-
-    ellipseMode(CENTER)
-
-    ellipse(mouseX, mouseY, 50);
-
+p.draw = function(){
+    if(p.mouseIsPressed === true){
+        p.fill(myColor.color());
+        p.noStroke();
+    p.ellipseMode(p.CENTER)
+    p.ellipse(p.mouseX, p.mouseY, 50);
     }
-
 }
 
- 
-
-function mousePressed() {
-
- 
-
-    if(mouseButton == LEFT){
-
-        fill(myColor.color());
-
-    ellipseMode(CENTER)
-
-    ellipse(mouseX, mouseY, WidthRect, heightRect);
-
+p.mousePressed = function() {
+    if(p.mouseButton == p.LEFT){
+    p.fill(myColor.color());
+    p.ellipseMode(p.CENTER)
+    p.ellipse(p.mouseX, p.mouseY, WidthRect, heightRect);
     }
-
 }
 
- 
-
-function keyPressed() {
-
-    if(keyCode == ENTER){
-
-        //replaced background(0) with this, now every time user picks a new colour and press enter the background will change
+p.keyPressed = function() {
+    if(p.keyCode == p.ENTER){
         background(colorPicker.color());
-
     }
-
- 
-
-    if(key === 's'){
-
-        saveCanvas('myCanvas', 'jpg');
-
+    if(p.key === 's'){
+        p.saveCanvas('myCanvas', 'jpg');
     }
-
 }
+}
+
+
+
+var c2 = function(p){
+    p.setup = function() {
+        var canvas = p.createCanvas(800, 800);
+        canvas.parent('#sketch2');   
+        p.background(0);
+        p.colorMode(p.HSB);
+        for(var i = 0; i < 500; i++){
+            p.circles();  
+        }
+    }
+    
+    p.draw = function() {
+    }
+    
+    p.circles = function() {
+        var x = p.random(p.width);
+        var y = p.random (p.height);
+        var d = p.random(5, 150);
+        var hue = p.random(120, 255)
+        p.noStroke();
+        p.fill(hue, 255, 255, 0.1);
+        p.circle(x, y, d);
+    }
+}
+
+var sketch1 = new p5(c1);
+
+var sketch2 = new p5(c2);

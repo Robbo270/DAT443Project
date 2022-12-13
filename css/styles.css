@@ -20,3 +20,14 @@ h1{
     text-align: center;
     padding-bottom: 10px;
 }
+
+#sketch1, #sketch2 {
+    /* move both sketchs to the middle of the page */
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+#sketch1 {
+    opacity: 50%;
+}
