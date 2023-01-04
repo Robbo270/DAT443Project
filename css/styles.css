@@ -1,5 +1,5 @@
 *{
-    margin: 0;
+    margin: 10;
     padding: 0;
     border: 0;
     box-sizing: border-box;
@@ -11,9 +11,11 @@ body{
     width: 100vw;
     height: 100vh;
     justify-content: center;
-    align-items: center;
-
-    margin: 0;
+    background-color: #F4F4F4;
+    /*background-image: url(../images/bg1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;*/
 }
 
 h1{
@@ -24,8 +26,9 @@ h1{
 #sketch1, #sketch2 {
     /* move both sketchs to the middle of the page */
     position: absolute;
-    top: 10%;
-    left: 10%;
+    left: 50%;
+    top: 50%;
+    margin: -350px 0 0 -375px;
 }
 
 #sketch1 {

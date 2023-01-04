@@ -9,9 +9,17 @@ var heightRect = 70;
 
     p.setup = function() {
     p.cursor(CROSS,32,32)
-    var canvas = createCanvas(1000,1000);
+    var canvas = createCanvas(80,80);
     canvas.parent('#sketch1');
     p.background(0)
+}
+
+p.setup = function() {
+    let button;
+        createCanvas(100, 100);
+        background(0);
+        button = p.createButton('click me');
+        button.position(900, 100);
 }
 
 let colorPicker;
@@ -19,10 +27,10 @@ p.setup = function() {
     myColor =  p.createColorPicker(p.color(255));
   p.createCanvas(80, 80);
   colorPicker = p.createColorPicker('#ed225d');
-  colorPicker.position(50, p.height);
-  myColor.position(100, p.height);
+  colorPicker.position(150, p.height);
+  myColor.position(200, p.height);
   p.cursor(p.CROSS,32,32)
-    var canvas = p.createCanvas(innerWidth,innerHeight-100);
+    var canvas = p.createCanvas(800,800);
     canvas.parent("sketch1");
     p.background(colorPicker.color());
 }
@@ -46,19 +54,18 @@ p.mousePressed = function() {
 
 p.keyPressed = function() {
     if(p.keyCode == p.ENTER){
-        background(colorPicker.color());
+        p.background(colorPicker.color());
     }
     if(p.key === 's'){
-        p.saveCanvas('myCanvas', 'jpg');
+        p.saveCanvas('canvas1', 'jpg');
     }
 }
 }
 
-
-
+//Drawing Canvas
 var c2 = function(p){
     p.setup = function() {
-        var canvas = p.createCanvas(800, 800);
+        var canvas = p.createCanvas(800,800);
         canvas.parent('#sketch2');   
         p.background(0);
         p.colorMode(p.HSB);
@@ -74,12 +81,13 @@ var c2 = function(p){
         var x = p.random(p.width);
         var y = p.random (p.height);
         var d = p.random(5, 150);
-        var hue = p.random(120, 255)
+        var hue = p.random(110, 255)
         p.noStroke();
         p.fill(hue, 255, 255, 0.1);
         p.circle(x, y, d);
     }
 }
+
 
 var sketch1 = new p5(c1);
 
