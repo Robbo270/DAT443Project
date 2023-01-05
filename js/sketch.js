@@ -14,14 +14,6 @@ var heightRect = 70;
     p.background(0)
 }
 
-p.setup = function() {
-    let button;
-        createCanvas(100, 100);
-        background(0);
-        button = p.createButton('click me');
-        button.position(900, 100);
-}
-
 let colorPicker;
 p.setup = function() {
     myColor =  p.createColorPicker(p.color(255));
@@ -33,6 +25,10 @@ p.setup = function() {
     var canvas = p.createCanvas(800,800);
     canvas.parent("sketch1");
     p.background(colorPicker.color());
+//creates the button
+  button = p.createButton('click me');
+  button.position(100, 100);
+  button.mousePressed(changeBG)
 }
 
 p.draw = function(){
@@ -60,6 +56,11 @@ p.keyPressed = function() {
         p.saveCanvas('canvas1', 'jpg');
     }
 }
+//changes the background colour
+function changeBG() {
+    let val = p.random(255);
+    p.background(val);
+  }
 }
 
 //Drawing Canvas
@@ -87,7 +88,6 @@ var c2 = function(p){
         p.circle(x, y, d);
     }
 }
-
 
 var sketch1 = new p5(c1);
 
