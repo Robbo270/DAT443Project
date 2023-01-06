@@ -12,23 +12,32 @@ var heightRect = 70;
     var canvas = createCanvas(80,80);
     canvas.parent('#sketch1');
     p.background(0)
+    frameRate(fr);
+        let fr = 165;
 }
 
 let colorPicker;
 p.setup = function() {
-    myColor =  p.createColorPicker(p.color(255));
+    myColor =  p.createColorPicker(p.color(0));
   p.createCanvas(80, 80);
-  colorPicker = p.createColorPicker('#ed225d');
-  colorPicker.position(150, p.height);
-  myColor.position(200, p.height);
+  colorPicker = p.createColorPicker('#ffffff');
+  colorPicker.position(230, p.height);
+  myColor.position(280, p.height);
   p.cursor(p.CROSS,32,32)
     var canvas = p.createCanvas(800,800);
     canvas.parent("sketch1");
     p.background(colorPicker.color());
+
 //creates the button
-  button = p.createButton('click me');
-  button.position(100, 100);
+  button = p.createButton('Press to Randomise Background');
+  button.position(130, 120);
   button.mousePressed(changeBG)
+
+  button = p.createButton('Press "S" to save');
+  button.position(185, 180);
+
+  button = p.createButton('Press "Enter" to Clear Page');
+  button.position(140, 240);
 }
 
 p.draw = function(){
@@ -42,6 +51,7 @@ p.draw = function(){
 
 p.mousePressed = function() {
     if(p.mouseButton == p.LEFT){
+    noStroke
     p.fill(myColor.color());
     p.ellipseMode(p.CENTER)
     p.ellipse(p.mouseX, p.mouseY, WidthRect, heightRect);
