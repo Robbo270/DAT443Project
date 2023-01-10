@@ -11,23 +11,38 @@ body{
     width: 100vw;
     height: 100vh;
     justify-content: center;
-    align-items: center;
-
-    margin: 0;
+    align-items: top;
+    margin: 0px;
 }
 
 h1{
     text-align: center;
     padding-bottom: 10px;
+    margin: 25px;
+    transform: translate(-0%, -10%);
 }
 
 #sketch1, #sketch2 {
     /* move both sketchs to the middle of the page */
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #sketch1 {
     opacity: 50%;
+}
+
+button{
+    background-color: #3b3434;
+    border: 4px solid #ff1111;
+    color: #ff1111;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: bold;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
